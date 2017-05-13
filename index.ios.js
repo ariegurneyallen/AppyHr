@@ -1,12 +1,35 @@
 import React, { Component } from 'react';
-import { AppRegistry, Text } from 'react-native';
+import { AppRegistry, Text, View } from 'react-native';
 
-class AppyHr extends Component {
+class Blink extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {showText: true};
+
+    //Toggle the state every second
+    setInterval(() => {
+      this.setState({ showtext: !this.state.showtext });
+    }, 1000);
+  }
+
   render() {
+    let display = this.state.showText ? this.props.text : ' ';
     return (
-      <Text> AppyHr </Text>
+      <Text>{display}</Text>
     );
   }
 }
 
-AppRegistry.registerComponent('AppyHr1', () => AppyHr);
+class BlinkApp extends Component {
+  render() {
+    return (
+      <View>
+        <Blink text='Shabba ranks' />
+        <Blink text="asap ferg" />
+        <Blink text='rollling' />
+      </View>
+    );
+  }
+}
+
+AppRegistry.registerComponent('AppyHr1', () => BlinkApp);
